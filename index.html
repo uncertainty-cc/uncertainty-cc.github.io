@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .note {
+      font-size: 0.8em;
+      color: #666;
+    }
+  </style>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>  
+  <script>
+  
+  var search = function() {
+    $.get('http://129.226.61.168/search?limit=10&q='+encodeURIComponent($('.query_box').val()), {}, function(data) {
+      console.log(data);
+      if (data['count'] == 0) {
+        $('.result').html('<h6>没有找到与 ['+data['query']+'] 有关的内容.....</h6>');
+        return;
+      }
+      $('.result').html("");
+      $('.result').append('<h6>'+data['count']+' results in '+data['query_time']+' seconds</h6>')
+      for (var i=0; i<data['count']; i+=1) {
+        $('.result').append('<div class="item"><a href="http://'+data['data'][i]['url']+'"><h3>'+data['data'][i]['title']+'</h3></a><p>'+data['data'][i]['snippet']+'</p><span class="note">'+data['data'][i]["content_date"]+' '+data['data'][i]["url"]+'</span>')
+      }
+    });
+  };
+  
+  $(document).ready(function() {
+    $('.search').click(function() {
+      search();
+    });
+  });
+  
+  $(document).keydown(function(e) {
+    if (e.keyCode == 13) {
+      search();
+    }
+  })
+  </script>
+</head>
+<body>
+  <input class="query_box"><button class="search">Search</button>
+  <div class="result"></div>
+</body>
+</html>
