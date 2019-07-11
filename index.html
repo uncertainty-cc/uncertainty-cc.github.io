@@ -12,7 +12,7 @@
   
   var search = function() {
   
-    $.get('https://129.226.61.168:8081/search?limit=10&q='+encodeURIComponent($('.query_box').val()), {}, function(data) {
+    $.get('https://129.226.61.168:8080/search?limit=10&q='+encodeURIComponent($('.query_box').val()), {}, function(data) {
       console.log(data);
       if (data['count'] == 0) {
         $('.result').html('<h6>没有找到与 ['+data['query']+'] 有关的内容.....</h6>');
