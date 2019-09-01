@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ternary Unicode</title>
+  <meta name="description" content="description text">
+  <meta name="keywords" content="key,words">
+  <meta name="author" content="author">
+  <link rel="stylesheet" href="">
+  <script src="char_map.js"></script>  
+  <script>  
+  window.onload = function() {
+    document.querySelector(".T-text").addEventListener("keyup", function() {
+      var size = Object.keys(map).length;
+      for (var i=-parseInt(size/2); i<parseInt(size/2); i+=1) {
+        if (map[i]["C"] == this.value[0]) {
+          document.querySelector(".result").innerHTML = "<h3>"+map[i]["T"]+"</h3><p>"+i+" - "+map[i]["C"]+"</p><p>"+map[i]["E"]+"</p>";
+          document.querySelector(".T-num").value = i;
+          return ;
+        }
+      }
+      document.querySelector(".result").innerHTML = "<h3>CANNOT FIND</h3>";
+    })
+    document.querySelector(".T-num").addEventListener("keyup", function() {
+      try {
+        document.querySelector(".result").innerHTML = "<h3>"+map[this.value]["T"]+"</h3><p>"+this.value+" - "+map[this.value]["C"]+"</p><p>"+map[this.value]["E"]+"</p>";
+        document.querySelector(".T-text").value = map[this.value]["C"];
+      } catch {
+        
+      }
+      
+    })
+  }
+  </script>
+</head>
+<body>
+  Search by character:
+  <input class="T-text" type="text">
+  <hr/>
+  Search by number
+  <input class="T-num" type="number">
+  <hr/>
+  <h6>Result</h6>
+  <div class="result"></div>
+</body>
+</html>
