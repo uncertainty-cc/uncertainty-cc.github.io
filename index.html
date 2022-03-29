@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Uncertainty.cc</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css">
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web">
+
+  <style type="text/css">
+    .ui.banner.segment {
+      min-height: 700px;
+      padding: 1em 0em;
+    }
+    .ui.banner.segment h1.ui.header {
+      margin-top: 3em;
+      margin-bottom: 0em;
+      font-family: "Titillium Web";
+      font-size: 4em;
+      font-weight: normal;
+    }
+    .ui.vertical.section {
+      padding: 4em 0em;
+    }
+    .ui.vertical.section h3 {
+      font-size: 2em;
+    }
+    .ui.vertical.section .button + h3,
+    .ui.vertical.section p + h3 {
+      margin-top: 3em;
+    }
+    .ui.vertical.section .floated.image {
+      clear: both;
+    }
+    .ui.vertical.section p {
+      font-size: 1.33em;
+    }
+
+    .footer.segment {
+      padding: 5em 0em;
+    }
+
+    @media only screen and (max-width: 700px) {
+      .ui.banner.segment {
+        min-height: 350px;
+      }
+      .ui.banner.segment h1.ui.header {
+        font-size: 2em;
+        margin-top: 2em;
+      }
+    }
+    
+
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+
+  <script>
+  $(document).ready(function() {
+    hljs.highlightAll();
+  });
+  </script>
+</head>
+<body">
+<div>
+  <div class="ui inverted vertical banner center aligned segment">
+    <div class="ui container">
+      <div class="ui large secondary inverted pointing menu">
+        <a class="active item">Home</a>
+        <!-- <a class="item">Work</a>
+        <a class="item">Company</a>
+        <a class="item">Careers</a> -->
+        <!-- <div class="right item">
+          <a class="ui inverted button">Log in</a>
+          <a class="ui inverted button">Sign Up</a>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="ui text container"><h1 class="ui inverted header" id="uncertainty_logo">Uncertainty.cc</h1></div>
+  </div>
+
+
+  <div class="ui vertical section segment">
+    <div class="ui text container">
+      <h3 class="ui header">XboxController-Python</h3>
+      <p>A python module to read XboxController inputs under Windows 10.</p>
+      <a class="ui large button" href="">PyPI</a>
+      <a class="ui large button" href="https://github.com/T-K-233/XboxController-Python">Github</a>
+      <h4 class="ui header">Quick Reference</h4>
+      <pre><code class="language-python">import time
+
+from xbox_controller import XboxController, Hand
+        
+stick = XboxController(0)
+
+while True:
+    stick.dispatchEvents()
+    stick.setRumble(Hand.LEFT, abs(stick.axes["LTrigger"]))
+    stick.setRumble(Hand.RIGHT, abs(stick.axes["RTrigger"]))
+    btn_a = stick.getAButton()
+    pov = stick.getPOV()
+    stick_x_l = stick.getX(Hand.LEFT)
+
+    print("A Btn:", ben_a, "\tPOV:", pov, "\tX Axis:", stick_x_l)
+
+    time.sleep(.01)
+      </code></pre>
+    </div>
+  </div>
+
+  <div class="ui vertical section segment">
+    <div class="ui text container">
+      <h3 class="ui header">NewLine Serialization Method</h3>
+      <p>A minimalistic communication protocol designed for various serial communication scenarios.</p>
+      <a class="ui large button" href="https://sites.google.com/view/nlsm-spec/home">Spec</a>
+      <h4 class="ui header">Quick Reference</h4>
+      <table class="ui celled table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Value (HEX)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Name">END</td>
+            <td data-label="Age">End of frame</td>
+            <td data-label="Job">0x0A</td>
+          </tr>
+          <tr>
+            <td data-label="Name">ESC</td>
+            <td data-label="Age">Escape</td>
+            <td data-label="Job">0x0B</td>
+          </tr>
+          <tr>
+            <td data-label="Name">ESC_END</td>
+            <td data-label="Age">Escaped end of frame</td>
+            <td data-label="Job">0x1A</td>
+          </tr>
+          <tr>
+            <td data-label="Name">ESC_ESC</td>
+            <td data-label="Age">Escaped escape</td>
+            <td data-label="Job">0x1B</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <!-- <h4 class="ui inverted header">About</h4>
+          <div class="ui inverted link list">
+            <a href="https://semantic-ui.com/examples/homepage.html#" class="item">Sitemap</a>
+            <a href="https://semantic-ui.com/examples/homepage.html#" class="item">Contact Us</a>
+            <a href="https://semantic-ui.com/examples/homepage.html#" class="item">Religious Ceremonies</a>
+            <a href="https://semantic-ui.com/examples/homepage.html#" class="item">Gazebo Plans</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Services</h4>
+          <div class="ui inverted link list">
+            <a href="https://semantic-ui.com/examples/homepage.html#" class="item">Banana Pre-Order</a>
+            <a href="https://semantic-ui.com/examples/homepage.html#" class="item">DNA FAQ</a>
+            <a href="https://semantic-ui.com/examples/homepage.html#" class="item">How To Access</a>
+            <a href="https://semantic-ui.com/examples/homepage.html#" class="item">Favorite X-Men</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">Footer Header</h4>
+          <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
