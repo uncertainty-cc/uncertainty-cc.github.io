@@ -93,26 +93,31 @@
     <div class="ui text container">
       <h3 class="ui header">XboxController-Python</h3>
       <p>A python module to read XboxController inputs under Windows 10.</p>
-      <a class="ui large button" href="">PyPI</a>
-      <a class="ui large button" href="https://github.com/T-K-233/XboxController-Python">Github</a>
+      <a class="ui large button" href="https://pypi.org/project/cc.xboxcontroller/">PyPI</a>
+      <a class="ui large button" href="https://github.com/uncertainty-cc/XboxController-Python">Github</a>
       <h4 class="ui header">Quick Reference</h4>
       <pre><code class="language-python">import time
+import sys
 
-from xbox_controller import XboxController, Hand
-        
-stick = XboxController(0)
+from cc.xboxcontroller import XboxController, Hand
 
-while True:
-    stick.dispatchEvents()
-    stick.setRumble(Hand.LEFT, abs(stick.axes["LTrigger"]))
-    stick.setRumble(Hand.RIGHT, abs(stick.axes["RTrigger"]))
-    btn_a = stick.getAButton()
-    pov = stick.getPOV()
-    stick_x_l = stick.getX(Hand.LEFT)
+def main():
+    """
+    """
+    stick = XboxController(0)
 
-    print("A Btn:", ben_a, "\tPOV:", pov, "\tX Axis:", stick_x_l)
+    while True:
+        stick.update()
+        stick.setRumble(Hand.LEFT, abs(stick.axes["LTrigger"]))
+        stick.setRumble(Hand.RIGHT, abs(stick.axes["RTrigger"]))
+        print("A Btn:", stick.getAButton(), end="")
+        print("\tPOV:", stick.getPOV(), end="")
+        print("\tX Axis:", stick.getX(Hand.LEFT))
+        time.sleep(.01)
 
-    time.sleep(.01)
+
+if __name__ == "__main__":
+    main()
       </code></pre>
     </div>
   </div>
